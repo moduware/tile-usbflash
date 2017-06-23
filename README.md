@@ -3,6 +3,7 @@ Tile for USB Flash module
 
 To build from scratch run these commands:
 ```
+npm install
 gulp styles
 gulp build
 gulp zip
