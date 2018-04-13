@@ -9,7 +9,11 @@ svg {
 img {
 	max-width: 100%;
 }
+html {
+	background-color: rgb(75, 195, 218);
+}
 body {
+	min-height: initial;
 	font-family: $main-font;
 }
 button {
@@ -37,7 +41,7 @@ button {
 }
 #wrapper {
 	@extend .no-overflow;
-	@include position(fixed, 40px 0 null null);
+	@include position(absolute, 40px 0 null null);
 	width: 100%;
 	height: calc(100% - 40px);
 	body.platform-android & {

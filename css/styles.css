@@ -9,7 +9,11 @@ svg {
 img {
   max-width: 100%; }
 
+html {
+  background-color: #4bc3da; }
+
 body {
+  min-height: initial;
   font-family: Roboto; }
 
 button {
@@ -36,7 +40,7 @@ button {
   user-select: none; }
 
 #wrapper {
-  position: fixed;
+  position: absolute;
   top: 40px;
   right: 0;
   width: 100%;
