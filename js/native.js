@@ -1,5 +1,6 @@
 
 var lastStatus = null;
+var lang = 'en';
 
 function checkStatus() {
 	console.log("checking status");
@@ -9,13 +10,21 @@ function checkStatus() {
 function Connect() {
 	console.log("connecting..");
 	Nexpaq.API.Module.SendCommand(Nexpaq.Arguments[0], 'Connect', [1]);
-	document.getElementById('button-connect').textContent = "Connecting...";
+	if(lang === 'en') {
+		document.getElementById('button-connect').textContent = "Connecting...";
+	} else {
+		document.getElementById('button-connect').textContent = "正在连接...";
+	}
 }
 
 function Disconnect() {
 	console.log("Disconnecting..");
 	Nexpaq.API.Module.SendCommand(Nexpaq.Arguments[0], 'Disconnect', [1]);
-	document.getElementById('button-disconnect').textContent = "Disconnecting...";
+	if (lang === 'en') {
+		document.getElementById('button-disconnect').textContent = "Disconnecting...";
+	} else {
+		document.getElementById('button-disconnect').textContent = "正在断开...";
+	}
 }
 
 /** ================ Handlers == */
@@ -47,7 +56,11 @@ function nativeDataUpdateHandler(event) {
 function onConnected() {
 	lastStatus = 'connected';
 
-	document.getElementById('button-connect').textContent = "Connect";
+	if(lang === 'en') {
+		document.getElementById('button-connect').textContent = "Connect";
+	} else {
+		document.getElementById('button-connect').textContent = "连接";
+	}
 
 	document.getElementById('button-connect').classList.add('hidden');
 	document.getElementById('svg-disconnected').classList.add('hidden');
@@ -60,7 +73,11 @@ function onConnected() {
 function onDisconnected() {
 	lastStatus = 'disconnected';
 
-	document.getElementById('button-disconnect').textContent = "Disconnect";
+	if(lang === 'en') {
+		document.getElementById('button-disconnect').textContent = "Disconnect";
+	} else {
+		document.getElementById('button-disconnect').textContent = "断开";
+	}
 
 	//document.getElementById('button-file-manager').classList.add('hidden');
 	document.getElementById('button-disconnect').classList.add('hidden');

@@ -17,7 +17,52 @@
 
     <!-- nexpaq libs -->
     <script type="text/javascript" src="node_modules/webview-tile-header/WebViewTileHeader.js"></script>
+    <script type="module">
+      import { html, render } from './node_modules/lit-html/lit-html.js';
+      const lang = 'en';
 
+      const enTemplate = () => html`
+        <div id="wrapper" class="wrapper">
+      
+          <div id="main-screen" class="main-screen mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <div class="svg-container">
+                <div id="svg-case-module" class="svg-case-module"></div>
+                <div id="svg-disconnected" class="svg-disconnected"></div>
+                <div id="svg-connected" class="svg-connected hidden"></div>
+              </div>
+              <div class="text" id="text">Connect to module and explore files with Android File Manager</div>
+              <button class="button-connect mdl-button--raised" id="button-connect">Connect</button>
+              <button class="button-connect mdl-button--raised hidden" id="button-disconnect">Disconnect</button>
+              <button class="button-file-manager mdl-button--raised hidden" id="button-file-manager">Open File Manager</button>
+          </div>
+
+        </div> 
+      `;
+
+      const zhTemplate = () => html`
+        <div id="wrapper" class="wrapper">
+      
+          <div id="main-screen" class="main-screen mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <div class="svg-container">
+                <div id="svg-case-module" class="svg-case-module"></div>
+                <div id="svg-disconnected" class="svg-disconnected"></div>
+                <div id="svg-connected" class="svg-connected hidden"></div>
+              </div>
+              <div class="text" id="text">连接模块并使用Android 文件管理器浏览文件</div>
+              <button class="button-connect mdl-button--raised" id="button-connect">连接</button>
+              <button class="button-connect mdl-button--raised hidden" id="button-disconnect">断开</button>
+              <button class="button-file-manager mdl-button--raised hidden" id="button-file-manager">打开文件管理器</button>
+          </div>
+
+        </div> 
+      `;
+
+       if (lang === 'en') {
+          render(enTemplate(), document.body);
+        } else {
+          render(zhTemplate(), document.body);
+        }
+    </script>
     <!-- partials -->
 
     <!-- screens -->
@@ -29,7 +74,7 @@
     <script type="text/javascript" src="js/native.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
   <body>
-    <div id="wrapper" class="wrapper">
+    <!-- <div id="wrapper" class="wrapper">
       
       <div id="main-screen" class="main-screen mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <div class="svg-container">
@@ -43,6 +88,6 @@
           <button class="button-file-manager mdl-button--raised hidden" id="button-file-manager">Open File Manager</button>
        </div>
 
-    </div>
+    </div> -->
   </body>
 </html>
