@@ -4,27 +4,27 @@ var lang = 'en';
 
 function checkStatus() {
 	console.log("checking status");
-    Nexpaq.API.Module.SendCommand(Nexpaq.Arguments[0], 'StatusCheck', []);
+	Nexpaq.API.Module.SendCommand(Nexpaq.Arguments[0], 'StatusCheck', []);
 }
 
 function Connect() {
 	console.log("connecting..");
 	Nexpaq.API.Module.SendCommand(Nexpaq.Arguments[0], 'Connect', [1]);
-	if(lang === 'en') {
-		document.getElementById('button-connect').textContent = "Connecting...";
-	} else {
-		document.getElementById('button-connect').textContent = "正在连接...";
-	}
+	// if(lang === 'en') {
+	// 	document.getElementById('button-connect').textContent = "Connecting...";
+	// } else {
+	// 	document.getElementById('button-connect').textContent = "正在连接...";
+	// }
 }
 
 function Disconnect() {
 	console.log("Disconnecting..");
 	Nexpaq.API.Module.SendCommand(Nexpaq.Arguments[0], 'Disconnect', [1]);
-	if (lang === 'en') {
-		document.getElementById('button-disconnect').textContent = "Disconnecting...";
-	} else {
-		document.getElementById('button-disconnect').textContent = "正在断开...";
-	}
+	// if (lang === 'en') {
+	// 	document.getElementById('button-disconnect').textContent = "Disconnecting...";
+	// } else {
+	// 	document.getElementById('button-disconnect').textContent = "正在断开...";
+	// }
 }
 
 /** ================ Handlers == */
@@ -56,33 +56,44 @@ function nativeDataUpdateHandler(event) {
 function onConnected() {
 	lastStatus = 'connected';
 
-	if(lang === 'en') {
-		document.getElementById('button-connect').textContent = "Connect";
-	} else {
-		document.getElementById('button-connect').textContent = "连接";
-	}
+	// if(lang === 'en') {
+	// 	document.getElementById('button-connect').textContent = "Connect";
+	// } else {
+	// 	document.getElementById('button-connect').textContent = "连接";
+	// }
 
 	document.getElementById('button-connect').classList.add('hidden');
-	document.getElementById('svg-disconnected').classList.add('hidden');
+	document.getElementById('button-connect-zh').classList.add('hidden');
 
+	document.getElementById('svg-disconnected').classList.add('hidden');
+	document.getElementById('svg-disconnected-zh').classList.add('hidden');
 	document.getElementById('svg-connected').classList.remove('hidden');
+	document.getElementById('svg-connected-zh').classList.remove('hidden');
+
+
 	document.getElementById('button-disconnect').classList.remove('hidden');
+	document.getElementById('button-disconnect-zh').classList.remove('hidden');
 	//document.getElementById('button-file-manager').classList.remove('hidden');
 }
 
 function onDisconnected() {
 	lastStatus = 'disconnected';
 
-	if(lang === 'en') {
-		document.getElementById('button-disconnect').textContent = "Disconnect";
-	} else {
-		document.getElementById('button-disconnect').textContent = "断开";
-	}
+	// if(lang === 'en') {
+	// 	document.getElementById('button-disconnect').textContent = "Disconnect";
+	// } else {
+	// 	document.getElementById('button-disconnect').textContent = "断开";
+	// }
 
 	//document.getElementById('button-file-manager').classList.add('hidden');
 	document.getElementById('button-disconnect').classList.add('hidden');
-	document.getElementById('svg-connected').classList.add('hidden');
+	document.getElementById('button-disconnect-zh').classList.add('hidden');
 
+	document.getElementById('svg-connected').classList.add('hidden');
+	document.getElementById('svg-connected-zh').classList.add('hidden');
 	document.getElementById('svg-disconnected').classList.remove('hidden');
+	document.getElementById('svg-disconnected-zh').classList.remove('hidden');
+
 	document.getElementById('button-connect').classList.remove('hidden');
+	document.getElementById('button-connect-zh').classList.remove('hidden');
 }

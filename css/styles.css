@@ -129,3 +129,6 @@ button {
     background-color: #4BC3DA;
     margin: auto;
     margin-bottom: 5%; }
+
+.main-screen.hidden, .main-screen#templates, .main-screen.app-screen:not(.active) {
+  display: none; }

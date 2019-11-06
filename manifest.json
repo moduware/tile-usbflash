@@ -3,9 +3,9 @@
   "name": "USB Flash",
   "description": "Nexpaq USB flash tile",
 
-  "version": "1.0.2",
-  "changes": "Fixed status bar offset",
-  "app_version": "1.0.3",
+  "version": "1.0.3",
+  "changes": "Add localisation to chinese",
+  "app_version": "1.1.8",
   "modules": [
     "nexpaq.module.usbflash"
   ],
