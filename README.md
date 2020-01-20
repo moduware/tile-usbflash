@@ -1,20 +1,24 @@
-# tile-usbflash
-Tile for USB Flash module
+<p align="center">
+  <img width="200" src="https://open-wc.org/hero.png"></img>
+</p>
 
-To build from scratch run these commands:
-```bash
-# install dependencies
-npm install
-# prepocess styles
-gulp styles
-# collect build files (dev mode compatible)
-gulp build
-# archive files for release
-gulp zip
+## Open-wc Starter App
+
+[![Built with open-wc recommendations](https://img.shields.io/badge/built%20with-open--wc-blue.svg)](https://github.com/open-wc)
+
+## Quickstart
+
+To get started:
+
+```sh
+npm init @open-wc
+# requires node 10 & npm 6 or higher
 ```
 
-As result you will get tile.zip file in root directory containing latest tile package ready for publishing.
+## Scripts
 
-[Live Preview][preview]
-
-[preview]: https://material.io/resizer/#device=handset&url=https%3A%2F%2Fnexpaq.github.io%2Ftile-usbflash%2F&width=360
+- `start` runs your app for development, reloading on file changes
+- `start:build` runs your app after it has been built using the build command
+- `build` builds your app and outputs it in your `dist` directory
+- `test` runs your test suite with Karma
+- `lint` runs the linter for your project
