@@ -99,8 +99,26 @@ export class OpenWc extends LitElement {
         margin-left: 15%;
         margin-right: 15%;
         text-align: center; }
-        body.platform-android .main-screen .text {
+
+      body.platform-android .main-screen .text {
           margin-top: 43%; }
+          
+      .main-screen .svg-disconnected {
+        position: relative;
+        top: -53%;
+        left: 14%;
+        background-image: url("../img/disconnected.svg");
+        width: 108px;
+        height: 129px;
+        z-index: 2; }
+      .main-screen .svg-connected {
+        position: relative;
+        top: -53%;
+        left: 14%;
+        background-image: url("../img/connected.svg");
+        width: 109px;
+        height: 129px;
+        z-index: 2; }
     `;
   }
 

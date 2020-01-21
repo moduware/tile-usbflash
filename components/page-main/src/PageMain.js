@@ -7,15 +7,12 @@ export class PageMain extends LitElement {
         display: block;
         padding: 25px;
         text-align: center;
-      }
-
-      @keyframes app-logo-spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
+        position: relative;
+        top: -53%;
+        left: 14%;
+        width: 109px;
+        height: 80px;
+        z-index: 2;
       }
     `;
   }
