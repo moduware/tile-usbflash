@@ -1,6 +1,8 @@
 import { LitElement, html, css } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { openWcLogo } from './open-wc-logo.js';
+import {connected} from './connect'
+import {disconnected} from './disconnect'
 
 import '../../page-main/page-main.js';
 import '../../page-one/page-one.js';
@@ -153,6 +155,9 @@ export class OpenWc extends LitElement {
   _renderPage() {
     return html`
           <page-main .logo=${openWcLogo}></page-main>
+          ${this.connectState ?
+                html`<page-main .logo=${disconnected}></page-main>` :
+                html`<page-main .logo=${connected}></page-main>`}
         `
   }
 
@@ -169,6 +174,7 @@ export class OpenWc extends LitElement {
     Nexpaq.API.Module.SendCommand(Nexpaq.Arguments[0], 'Connect', [1]);
     this.connectState = false;
   }
+
   _Disconnect() {
     alert("Disconnecting")
     Nexpaq.API.Module.SendCommand(Nexpaq.Arguments[0], 'Disconnect', [1]);
