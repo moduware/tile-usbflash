@@ -1,0 +1,55 @@
+import { Story, Preview, Meta, Props, html } from '@open-wc/demoing-storybook';
+
+import '../open-wc.js';
+
+<Meta 
+  title="OpenWc"
+  parameters={{
+    component: "open-wc",
+    options: { selectedPanel: "storybookjs/knobs/panel" }
+  }}
+/>
+
+# OpenWc
+
+A component for...
+
+## Features:
+
+- a
+- b
+- ...
+
+## How to use
+
+### Installation
+
+```bash
+yarn add open-wc
+```
+
+```js
+import 'open-wc/open-wc.js';
+```
+
+<Preview withToolbar>
+  <Story name="Simple">
+    {html`
+      <open-wc></open-wc>
+    `}
+  </Story>
+</Preview>
+
+## API
+
+<Props of="open-wc" />
+
+## Variations
+
+###### Custom Title
+
+<Story name="Custom Title">
+  {html`
+    <open-wc .title=${'Hello World'}></open-wc>
+  `}
+</Story>
