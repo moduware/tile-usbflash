@@ -1,4 +1,4 @@
-document.addEventListener('NexpaqAPIReady', function(event) {
+document.addEventListener('NexpaqAPIReady', (event) => {
 	Nexpaq.API.Module.addEventListener('DataReceived', nativeDataUpdateHandler);
 
 	checkStatus();
