@@ -8,10 +8,10 @@ export class PageMain extends LitElement {
         padding: 25px;
         text-align: center;
         position: relative;
-        top: -53%;
-        left: 14%;
+        top: 100px;
+        left: 25%;
         width: 109px;
-        height: 80px;
+        height: 100px;
         z-index: 2;
       }
     `;

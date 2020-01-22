@@ -103,22 +103,6 @@ export class OpenWc extends LitElement {
       body.platform-android .main-screen .text {
           margin-top: 43%; }
           
-      .main-screen .svg-disconnected {
-        position: relative;
-        top: -53%;
-        left: 14%;
-        background-image: url("../img/disconnected.svg");
-        width: 108px;
-        height: 129px;
-        z-index: 2; }
-      .main-screen .svg-connected {
-        position: relative;
-        top: -53%;
-        left: 14%;
-        background-image: url("../img/connected.svg");
-        width: 109px;
-        height: 129px;
-        z-index: 2; }
     `;
   }
 
@@ -132,23 +116,6 @@ export class OpenWc extends LitElement {
   render() {
     return html`
       <header>
-        <ul>
-          <li>
-            <a href="#main" class=${this.__navClass('main')} @click=${this.__onNavClicked}>
-              Main
-            </a>
-          </li>
-          <li>
-            <a href="#pageOne" class=${this.__navClass('pageOne')} @click=${this.__onNavClicked}>
-              Page One
-            </a>
-          </li>
-          <li>
-            <a href="#about" class=${this.__navClass('about')} @click=${this.__onNavClicked}>
-              About
-            </a>
-          </li>
-        </ul>
         <moduware-header 
           title="USB Flash"
           @back-button-click=${() => this._backButtonClickHandler()}
@@ -160,6 +127,7 @@ export class OpenWc extends LitElement {
       <main>
           <div id="main-screen" class="main-screen mdl-layout mdl-js-layout mdl-layout--fixed-header">
               ${this._renderPage()}
+
               <div class="text" id="text">Connect to module and explore files with Android File Manager</div>
               ${this.connectState ?
                 html`<button class="button-connect mdl-button--raised" id="button-connect" @click=${() => this._Connect()}>Connect</button>` :
@@ -178,6 +146,7 @@ export class OpenWc extends LitElement {
                 html`<page-main .logo=${connected}></page-main>`}
         `
   }
+  
 
   __navClass(page) {
     return classMap({ active: this.page === page });
@@ -188,14 +157,14 @@ export class OpenWc extends LitElement {
   }
 
   _Connect() {
-    alert("Connecting")
     Nexpaq.API.Module.SendCommand(Nexpaq.Arguments[0], 'Connect', [1]);
     this.connectState = false;
+    alert("Connected")
   }
 
   _Disconnect() {
-    alert("Disconnecting")
     Nexpaq.API.Module.SendCommand(Nexpaq.Arguments[0], 'Disconnect', [1]);
     this.connectState = true;
+    alert("Disconnected")
   }
 }
