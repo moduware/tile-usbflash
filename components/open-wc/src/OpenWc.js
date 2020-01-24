@@ -8,15 +8,36 @@ import '../../page-main/page-main.js';
 import '../../page-one/page-one.js';
 import { templateAbout } from './templateAbout.js';
 import '../../../node_modules/webview-tile-header/webview-tile-header';
+import * as translation from '../../translations/language.js';
+
+import { registerTranslateConfig, use, translate } from "@appnest/lit-translate";
+
+registerTranslateConfig({
+  loader: (lang) => Promise.resolve(translation[lang])
+});
+
+
+// if (window.ModuwareAPIIsReady){
+//   console.log(Moduware.Arguments.language)
+//   use( Moduware.Arguments.language);
+// }else{
+  use('en');
+// }
+
+
+
+
 
 export class OpenWc extends LitElement {
   static get properties() {
     return {
       title: { type: String },
       page: { type: String },
-      connectState: { type: Boolean }
+      connectState: { type: Boolean },
+
     };
   }
+
 
   static get styles() {
     return css`
@@ -112,6 +133,12 @@ export class OpenWc extends LitElement {
     this.connectState = true;
   }
 
+  updated() {
+		if (Moduware.Arguments.has(language)) {
+      console.log(Moduware.Arguments.language)
+			use(Moduware.Arguments.language);
+		}
+	}
 
   render() {
     return html`
@@ -128,10 +155,10 @@ export class OpenWc extends LitElement {
           <div id="main-screen" class="main-screen mdl-layout mdl-js-layout mdl-layout--fixed-header">
               ${this._renderPage()}
 
-              <div class="text" id="text">Connect to module and explore files with Android File Manager</div>
+              <div class="text" id="text">${translate('hit.hit')}</div>
               ${this.connectState ?
-                html`<button class="button-connect mdl-button--raised" id="button-connect" @click=${() => this._Connect()}>Connect</button>` :
-                html`<button class="button-connect mdl-button--raised" id="button-disconnect" @click=${() => this._Disconnect()}>Disconnect</button>`}
+                html`<button class="button-connect mdl-button--raised" id="button-connect" @click=${() => this._Connect()}>${translate('button.connect')}</button>` :
+                html`<button class="button-connect mdl-button--raised" id="button-disconnect" @click=${() => this._Disconnect()}>${translate("button.disconnect")}</button>`}
           </div>
       </main>
 
@@ -167,4 +194,12 @@ export class OpenWc extends LitElement {
     this.connectState = true;
     alert("Disconnected")
   }
+  
+    onConnected() {
+      this.connectState = false;
+    }
+    
+    onDisconnected() {
+      this.connectState = true;
+    }
 }

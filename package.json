@@ -60,6 +60,7 @@
   "author": "open-wc",
   "license": "MIT",
   "dependencies": {
+    "@appnest/lit-translate": "^1.1.18",
     "@moduware/morph-button": "^2.0.0",
     "lit-element": "^2.0.1",
     "lit-html": "^1.0.0",

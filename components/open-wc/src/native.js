@@ -1,9 +1,11 @@
-document.addEventListener('NexpaqAPIReady', (event) => {
-	Nexpaq.API.Module.addEventListener('DataReceived', nativeDataUpdateHandler);
+var lastStatus = null;
+document.addEventListener("WebViewApiReady", function(event) {
+  console.log("checkin status");
+  Nexpaq.API.Module.addEventListener("DataReceived", nativeDataUpdateHandler);
 
-	checkStatus();
+  checkStatus();
 
-	setInterval(checkStatus, 15000);	
+  setInterval(checkStatus, 15000);
 
 });
 
@@ -37,9 +39,11 @@ function nativeDataUpdateHandler(event) {
   }
 
    function onConnected() {
+    lastStatus = 'connected';
     this.connectState = false;
   }
   
    function onDisconnected() {
+    lastStatus = 'disconnected';
     this.connectState = true;
   }
