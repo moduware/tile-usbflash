@@ -1,5 +1,5 @@
-var lastStatus = null;
-document.addEventListener("WebViewApiReady", function(event) {
+let lastStatus = null;
+document.addEventListener("WebViewApiReady", (event) => {
   console.log("checkin status");
   Nexpaq.API.Module.addEventListener("DataReceived", nativeDataUpdateHandler);
 

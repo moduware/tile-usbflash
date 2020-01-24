@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map.js';
+import { registerTranslateConfig, use, translate } from "@appnest/lit-translate";
 import { openWcLogo } from './open-wc-logo.js';
 import {connected} from './connect'
 import {disconnected} from './disconnect'
@@ -10,7 +11,6 @@ import { templateAbout } from './templateAbout.js';
 import '../../../node_modules/webview-tile-header/webview-tile-header';
 import * as translation from '../../translations/language.js';
 
-import { registerTranslateConfig, use, translate } from "@appnest/lit-translate";
 
 registerTranslateConfig({
   loader: (lang) => Promise.resolve(translation[lang])
