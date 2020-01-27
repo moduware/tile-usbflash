@@ -1,0 +1,73 @@
+* {
+	outline: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+svg {
+	width: 100%;
+	height: auto;
+}
+
+img {
+	max-width: 100%;
+}
+
+html {
+	background-color: rgb(75, 195, 218);
+}
+
+body {
+	min-height: initial;
+	font-family: var(--main-font);
+}
+
+button {
+	color: inherit;
+	font-size: inherit;
+	font-family: inherit;
+	border: 0;
+	padding: 0;
+	background-color: transparent;
+}
+
+.hidden.hidden.hidden {
+	display: none;
+}
+
+.invisible {
+	visibility: hidden !important;
+}
+
+.no-overflow {
+	overflow: hidden;
+}
+
+.unselectable {
+  user-select: none;
+}
+
+#templates {
+  display: none;
+}
+
+#wrapper {
+  overflow: hidden;
+  position: absolute;
+  top: 40px; right: 0;
+	width: 100%;
+	height: calc(100% - 40px);
+}
+
+body.platform-android #wrapper {
+  top: 55px;
+  height: calc(100% - 55px)
+}
+
+.app-screen {
+  overflow: hidden;
+}
+
+.app-screen:not(.active) {
+  overflow: hidden;
+}
+
