@@ -63,12 +63,9 @@ const loadPage = (page) => (dispatch) => {
 		case 'page-one':
 			import('../components/page-one.js');
 			break;
-		case 'page-two':
-			import('../components/page-two.js');
-			break;
 		default:
-			page = 'error-page';
-			import('../components/error-page.js');
+			page = 'home-page';
+			import('../components/home-page.js');
 	}
 
 	dispatch(updatePage(page));

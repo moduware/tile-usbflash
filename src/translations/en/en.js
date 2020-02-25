@@ -3,7 +3,7 @@
  */
 export const en = {
 	"header": {
-		"title": "Tile Template",
+		"title": "USB Flash",
 	},
 	"my-app": {
 		"title": "Tile Template",
@@ -13,8 +13,5 @@ export const en = {
 	},
 	"page-one": {
 		"title": "Page One",
-	},
-	"page-two": {
-		"title": "Page Two",
 	}
 };

@@ -17,18 +17,10 @@ export const SharedStyles = css`
   }
 
   section {
-    padding: 24px;
-    background: var(--app-section-odd-color);
-  }
-
-  section > * {
-    max-width: 600px;
-    margin-right: auto;
-    margin-left: auto;
-  }
-
-  section:nth-of-type(even) {
-    background: var(--app-section-even-color);
+    /* padding: 24px;
+    background: var(--app-section-odd-color); */
+    background-color: #3A3A3A;
+    height: 100vh;
   }
 
   h2 {
@@ -37,22 +29,30 @@ export const SharedStyles = css`
     color: var(--app-dark-text-color);
   }
 
-  @media (min-width: 460px) {
-    h2 {
-      font-size: 36px;
-    }
-  }
-
-  .circle {
-    display: block;
-    width: 64px;
-    height: 64px;
-    margin: 0 auto;
-    text-align: center;
-    border-radius: 50%;
-    background: var(--app-primary-color);
-    color: var(--app-light-text-color);
-    font-size: 30px;
-    line-height: 64px;
-  }
 `;
+
+export const PageStyles = css`
+  .page {
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 15px;
+    padding-top: var(--app-pages-padding-top);
+  }  
+`;
+
+
+
+// #wrapper could be the morph-pages
+// #wrapper {
+//   overflow: hidden;
+//   position: absolute;
+//   top: 40px; right: 0;
+//   width: 100 %;
+//   height: calc(100 % - 40px);
+// }
+
+// body.platform - android #wrapper {
+//   top: 55px;
+//   height: calc(100 % - 55px)
+// }

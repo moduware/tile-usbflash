@@ -24,9 +24,11 @@ import '@polymer/app-layout/app-header/app-header.js';
 import '@polymer/app-layout/app-scroll-effects/effects/waterfall.js';
 import '@polymer/app-layout/app-toolbar/app-toolbar.js';
 import './icons.js';
-import 'webview-tile-header/webview-tile-header'
+import 'webview-tile-header/webview-tile-header';
+import '@moduware/morph-pages';
 import { registerTranslateConfig, use, translate, get } from "@appnest/lit-translate";
 import * as translation from '../translations/language.js';
+import { PageStyles } from './shared-styles.js';
 
 class MyApp extends connect(store)(LitElement) {
 
@@ -44,6 +46,7 @@ class MyApp extends connect(store)(LitElement) {
 
 	static get styles() {
 		return [
+      PageStyles,
 			css`
         :host {
           display: block;
@@ -64,6 +67,7 @@ class MyApp extends connect(store)(LitElement) {
           --app-drawer-background-color: var(--app-secondary-color);
           --app-drawer-text-color: var(--app-light-text-color);
           --app-drawer-selected-color: #78909C;
+          --moduware-brand-color:  #d02e3d;
         }
 
         app-header {
@@ -184,6 +188,27 @@ class MyApp extends connect(store)(LitElement) {
             padding-right: 0px;
           }
         }
+
+        moduware-header {
+          --text-color: white;
+          --back-button-color: white;
+          --style-background-color: #4bc3da;
+
+          margin-top: 24px;
+        }
+
+        morph-pages {
+          /* display: block; */
+          /* min-height: 100vh */
+          height: 100vh;
+          /* border: 1px solid red; */
+          background-color: #293237;
+        }
+
+        h1 {
+          color: white;
+        }
+
       `
 		];
 	}
@@ -194,14 +219,15 @@ class MyApp extends connect(store)(LitElement) {
       <moduware-header	
         @back-button-click="${() => store.dispatch(headerBackButtonClicked())}"
 				title="${translate('header.title')}">
-			</moduware-header>
+      </moduware-header>
+      
       <!-- Main content -->
-      <main role="main" class="main-content">
+      
+      <morph-pages>
         <home-page class="page" ?active="${this._page === 'home-page'}"></home-page>
-        <page-one class="page" ?active="${this._page === 'page-one'}"></page-one>
-        <page-two class="page" ?active="${this._page === 'page-two'}"></page-two>
-        <error-page class="page" ?active="${this._page === 'error-page'}"></error-page>
-      </main>
+        <!-- <page-one class="page" ?active="${this._page === 'page-one'}"></page-one> -->
+      </morph-pages>
+      
     `;
 	}
 
