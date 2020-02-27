@@ -13,6 +13,8 @@ import {
 	MODUWARE_API_READY,
 	LOAD_LANGUAGE_TRANSLATION,
 	GET_PLATFORM,
+	CONNECT_USB,
+	DISCONNECT_USB,
 } from '../actions/app.js';
 
 const INITIAL_STATE = {
@@ -20,6 +22,7 @@ const INITIAL_STATE = {
 	apiReady: false,
 	language: 'en',
 	platform: '',
+	usbConnected: false,
 };
 
 const app = (state = INITIAL_STATE, action) => {
@@ -43,6 +46,16 @@ const app = (state = INITIAL_STATE, action) => {
 			return {
 				...state,
 				platform: action.platform
+			}
+		case CONNECT_USB:
+			return {
+				...state,
+				usbConnected: true
+			}
+		case DISCONNECT_USB:
+			return {
+				...state,
+				usbConnected: false
 			}
 		default:
 			return state;

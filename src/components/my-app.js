@@ -41,6 +41,7 @@ class MyApp extends connect(store)(LitElement) {
         type: String,
         reflect: true
       },
+      usbConnected: { type: Boolean }
 		};
 	}
 
@@ -270,7 +271,8 @@ class MyApp extends connect(store)(LitElement) {
 	stateChanged(state) {
 		this._page = state.app.page;
 		this._language = state.app.language;
-		this.platform = state.app.platform;
+    this.platform = state.app.platform;
+    this.usbConnected = state.app.usbConnected;
 	}
 }
 

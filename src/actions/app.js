@@ -12,6 +12,8 @@ export const UPDATE_PAGE = 'UPDATE_PAGE';
 export const MODUWARE_API_READY = 'MODUWARE_API_READY';
 export const LOAD_LANGUAGE_TRANSLATION = 'LOAD_LANGUAGE_TRANSLATION';
 export const GET_PLATFORM = 'GET_PLATFORM';
+export const CONNECT_USB = 'CONNECT_USB';
+export const DISCONNECT_USB = 'DISCONNECT_USB';
 
 // This is a fix to iOS not auto connecting and not finding any devices
 export const initializeModuwareApiAsync = () => async dispatch => {
@@ -28,7 +30,7 @@ export const initializeModuwareApiAsync = () => async dispatch => {
 }
 
 export const moduwareApiReady = () => async dispatch => {
-
+	console.log('Moduware', Moduware)
 	dispatch({ type: MODUWARE_API_READY });
 	dispatch(loadLanguageTranslation());
 
@@ -36,10 +38,36 @@ export const moduwareApiReady = () => async dispatch => {
 		dispatch(hardwareBackButtonPressed());
 	});
 
+	Moduware.v1.Module.addEventListener('MessageReceived', async (data) => {
+		if(data.ModuleUuid !== Moduware.Arguments.uuid) return;
+		console.log('data', data);
+		if (data.Message.dataSource == 'StateChangeResponse' && data.Message.variables.result == 'success') {
+			// requestStatusCheck();
+			console.log('success?????', data);
+		}
+
+		// upon opening tile, update usb flash connect button state based on status check
+		if (data.Message.dataSource === 'StatusRequestResponse') {
+			if (data.Message.variables.status === 'connected') {
+				dispatch({ type: CONNECT_USB });
+			} else {
+				dispatch({ type: DISCONNECT_USB });
+			}
+		}
+	});
+	
+	requestStatusCheck();
+
 	// Moduware.v1.Bluetooth.addEventListener('ConnectionLost', () => {
 	// 	dispatch(connectionLost());
 	// });
 }
+
+function requestStatusCheck() {
+	if (typeof Moduware !== 'undefined') {
+		Moduware.v1.Module.ExecuteCommand(Moduware.Arguments.uuid, 'StatusCheck', []);
+	}
+};
 
 export const navigate = (path) => (dispatch) => {
 	const page = path === '/' ? 'home-page' : path.slice(1);
@@ -109,3 +137,28 @@ export const getPlatform = () => (dispatch) => {
 	dispatch({ type: GET_PLATFORM, platform });
 };
 
+export const connectUsb = async () => {
+	console.log('connecting...');
+	if(typeof Moduware !== 'undefined') {
+		await Moduware.v1.Module.ExecuteCommand(Moduware.Arguments.uuid, 'Connect', []);
+	}
+	return { type: CONNECT_USB }
+}
+
+export const disconnectUsb = async () => {
+	console.log('disconnecting...');
+	if (typeof Moduware !== 'undefined') {
+		await Moduware.v1.Module.ExecuteCommand(Moduware.Arguments.uuid, 'Disconnect', []);
+	}
+	return { type: DISCONNECT_USB }
+}
+
+export const toggleUsbConnection = () => async (dispatch, getState) => {
+	// dispatch action to display connecting or disabling of button
+	let connected = getState().app.usbConnected;
+	if (connected) {
+		dispatch(await disconnectUsb());
+	} else {
+		dispatch(await connectUsb());
+	}
+}

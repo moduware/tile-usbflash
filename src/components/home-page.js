@@ -10,22 +10,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 import { html, css } from 'lit-element';
 import { PageViewElement } from './page-view-element.js';
-import { navigate } from '../actions/app.js';
 import { store } from '../store.js';
 import { connect } from 'pwa-helpers/connect-mixin.js';
+import { 
+	navigate,
+	connectUsb,
+	disconnectUsb,
+	toggleUsbConnection 
+} from '../actions/app.js';
 import { SharedStyles, PageStyles } from './shared-styles.js';
 import app from '../reducers/app.js';
 import './icons.js';
 import { registerTranslateConfig, use, translate, get } from "@appnest/lit-translate";
 import * as translation from '../translations/language.js';
-import { caseModule, connectedSymbol } from './icons.js';
+import { caseModule, connectedSymbol, disconnectedSymbol } from './icons.js';
 
 class HomePage extends connect(store)(PageViewElement) {
 
 	static get properties() {
 		return {
 			_page: { type: String },
-			_language: { type: String }
+			_language: { type: String },
+			_usbConnected: { type: Boolean }
 		};
 	}
 
@@ -169,11 +175,10 @@ class HomePage extends connect(store)(PageViewElement) {
 					<div class="svg-container">
 						<div id="svg-case-module" class="svg-case-module">${caseModule}</div>
 						<div id="svg-disconnected" class="svg-disconnected"></div>
-						<div id="svg-connected" class="svg-connected">${connectedSymbol}</div>
+						<div id="svg-connected" class="svg-connected">${this._usbConnected ? connectedSymbol : disconnectedSymbol}</div>
 					</div>
 					<div class="text" id="text">Connect to module and explore files with Android File Manager</div>
-					<button class="button-connect mdl-button--raised" id="button-connect">Connect</button>
-					<!-- <button class="button-connect mdl-button--raised hidden" id="button-disconnect">Disconnect</button> -->
+					<button class="button-connect mdl-button--raised" id="button-connect" @click="${this.connectButtonClickHandler}">${this._usbConnected ? 'Disconnect' : 'Connect'}</button>
 					<!-- <button class="button-file-manager mdl-button--raised hidden" id="button-file-manager">Open File Manager</button> -->
 				</div>
 
@@ -181,9 +186,14 @@ class HomePage extends connect(store)(PageViewElement) {
     `;
 	}
 
+	async connectButtonClickHandler() {
+		store.dispatch(await toggleUsbConnection());
+	}
+
 	stateChanged(state) {
 		this._page = state.app.page;
 		this._language = state.app.language;
+		this._usbConnected = state.app.usbConnected;
 	}
 
 }
