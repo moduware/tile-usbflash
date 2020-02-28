@@ -24,6 +24,7 @@ import './icons.js';
 import { registerTranslateConfig, use, translate, get } from "@appnest/lit-translate";
 import * as translation from '../translations/language.js';
 import { caseModule, connectedSymbol, disconnectedSymbol } from './icons.js';
+import '@moduware/morph-button'
 
 class HomePage extends connect(store)(PageViewElement) {
 
@@ -134,6 +135,10 @@ class HomePage extends connect(store)(PageViewElement) {
 					margin-bottom: 5%;
 				}
 
+				morph-button {
+					--color: #4bc3da;
+				}
+
 				.mdl-button--raised {
 					background: rgba(158,158,158,.2);
 					box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px rgba(0,0,0,.12);
@@ -178,7 +183,7 @@ class HomePage extends connect(store)(PageViewElement) {
 						<div id="svg-connected" class="svg-connected">${this._usbConnected ? connectedSymbol : disconnectedSymbol}</div>
 					</div>
 					<div class="text" id="text">${translate('home-page.connect-instructions')}</div>
-					<button class="button-connect mdl-button--raised" id="button-connect" @click="${this.connectButtonClickHandler}">${this._usbConnected ? translate('home-page.disconnect') : translate('home-page.connect')}</button>
+					<morph-button filled class="button-connect" id="button-connect" @click="${this.connectButtonClickHandler}">${this._usbConnected ? translate('home-page.disconnect') : translate('home-page.connect')}</morph-button>
 					<!-- <button class="button-file-manager mdl-button--raised hidden" id="button-file-manager">Open File Manager</button> -->
 				</div>
 
