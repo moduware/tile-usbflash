@@ -3,18 +3,11 @@
  */
 export const zh = {
 	"header": {
-		"title": "USB Flash (Chinese)",
-	},
-	"my-app": {
-		"title": "Tile Template (Chinese)",
+		"title": "USB Flash",
 	},
 	"home-page": {
-		"title": "Home Page (Chinese)",
-	},
-	"page-one": {
-		"title": "Page One (Chinese)",
-	},
-	"page-two": {
-		"title": "Page Two (Chinese)",
+		"connect-instructions": "连接模块并使用Android文件管理器浏览文件",
+		"connect": "连接",
+		"disconnect": "断开"
 	}
 };

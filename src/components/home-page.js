@@ -177,8 +177,8 @@ class HomePage extends connect(store)(PageViewElement) {
 						<div id="svg-disconnected" class="svg-disconnected"></div>
 						<div id="svg-connected" class="svg-connected">${this._usbConnected ? connectedSymbol : disconnectedSymbol}</div>
 					</div>
-					<div class="text" id="text">Connect to module and explore files with Android File Manager</div>
-					<button class="button-connect mdl-button--raised" id="button-connect" @click="${this.connectButtonClickHandler}">${this._usbConnected ? 'Disconnect' : 'Connect'}</button>
+					<div class="text" id="text">${translate('home-page.connect-instructions')}</div>
+					<button class="button-connect mdl-button--raised" id="button-connect" @click="${this.connectButtonClickHandler}">${this._usbConnected ? translate('home-page.disconnect') : translate('home-page.connect')}</button>
 					<!-- <button class="button-file-manager mdl-button--raised hidden" id="button-file-manager">Open File Manager</button> -->
 				</div>
 

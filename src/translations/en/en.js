@@ -5,13 +5,9 @@ export const en = {
 	"header": {
 		"title": "USB Flash",
 	},
-	"my-app": {
-		"title": "Tile Template",
-	},
 	"home-page": {
-		"title": "Home Page",
-	},
-	"page-one": {
-		"title": "Page One",
+		"connect-instructions": "Connect to module and explore files with Android File Manager",
+		"connect": "Connect",
+		"disconnect": "Disconnect"
 	}
 };
