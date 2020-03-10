@@ -12,10 +12,10 @@ import { LitElement, html, css } from 'lit-element';
 import { setPassiveTouchGestures } from '@polymer/polymer/lib/utils/settings.js';
 import { connect } from 'pwa-helpers/connect-mixin.js';
 import { store } from '../store.js';
-import { 
-  navigate, 
-  headerBackButtonClicked, 
-  initializeModuwareApiAsync, 
+import {
+  navigate,
+  headerBackButtonClicked,
+  initializeModuwareApiAsync,
   loadLanguageTranslation,
   getPlatform
 } from '../actions/app.js';
@@ -195,7 +195,9 @@ class MyApp extends connect(store)(LitElement) {
           --back-button-color: white;
           --style-background-color: #4bc3da;
 
-          margin-top: 24px;
+          /*margin-top: 24px;*/
+          border: none;
+          position: absolute;
         }
 
         morph-pages {
@@ -217,18 +219,18 @@ class MyApp extends connect(store)(LitElement) {
 	render() {
 		return html`
       <!-- Webview Header -->
-      <moduware-header	
+      <moduware-header
         @back-button-click="${() => store.dispatch(headerBackButtonClicked())}"
 				title="${translate('header.title')}">
       </moduware-header>
-      
+
       <!-- Main content -->
-      
+
       <morph-pages>
         <home-page class="page" ?active="${this._page === 'home-page'}"></home-page>
         <!-- <page-one class="page" ?active="${this._page === 'page-one'}"></page-one> -->
       </morph-pages>
-      
+
     `;
 	}
 
@@ -264,7 +266,7 @@ class MyApp extends connect(store)(LitElement) {
 		if (changedProperties.has('_language')) {
 			use(this._language);
     }
-    
+
     console.log('platform is:', this.platform);
 	}
 

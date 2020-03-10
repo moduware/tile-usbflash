@@ -12,11 +12,11 @@ import { html, css } from 'lit-element';
 import { PageViewElement } from './page-view-element.js';
 import { store } from '../store.js';
 import { connect } from 'pwa-helpers/connect-mixin.js';
-import { 
+import {
 	navigate,
 	connectUsb,
 	disconnectUsb,
-	toggleUsbConnection 
+	toggleUsbConnection
 } from '../actions/app.js';
 import { SharedStyles, PageStyles } from './shared-styles.js';
 import app from '../reducers/app.js';
@@ -118,7 +118,7 @@ class HomePage extends connect(store)(PageViewElement) {
 					line-height: 16px;
 					margin-top: 53%;
 					margin-left: 15%;
-					margin-right: 15%; 
+					margin-right: 15%;
 					text-align: center;
 				}
 
@@ -132,7 +132,8 @@ class HomePage extends connect(store)(PageViewElement) {
 					color: #FFFFFF;
 					background-color: #4BC3DA;
 					margin: auto;
-					margin-bottom: 5%;
+					margin-bottom: 5px;
+          text-transform: none;
 				}
 
 				morph-button {
@@ -174,9 +175,9 @@ class HomePage extends connect(store)(PageViewElement) {
 	render() {
 		return html`
       <div id="wrapper" class="wrapper">
-      
+
 				<div id="pageMain" class="page page--main">
-					
+
 					<div class="svg-container">
 						<div id="svg-case-module" class="svg-case-module">${caseModule}</div>
 						<div id="svg-disconnected" class="svg-disconnected"></div>
