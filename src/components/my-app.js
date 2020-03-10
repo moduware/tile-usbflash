@@ -51,6 +51,7 @@ class MyApp extends connect(store)(LitElement) {
 			css`
         :host {
           display: block;
+          height: 100%;
 
           --app-drawer-width: 256px;
 
@@ -203,8 +204,9 @@ class MyApp extends connect(store)(LitElement) {
         morph-pages {
           /* display: block; */
           /* min-height: 100vh */
-          height: 100vh;
+          /*height: 100vh;*/
           /* border: 1px solid red; */
+          height: 100%;
           background-color: #293237;
         }
 
