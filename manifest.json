@@ -1,7 +1,7 @@
 {
   "id": "nexpaq.tile.usbflash",
   "name": "USB Flash",
-  "description": "Nexpaq USB flash tile",
+  "description": "(develop pwa) Nexpaq USB flash tile",
 
   "version": "1.0.4",
   "changes": "Add localisation to chinese",
