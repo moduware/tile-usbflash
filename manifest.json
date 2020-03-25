@@ -1,16 +1,14 @@
 {
-  "id": "nexpaq.tile.usbflash",
-  "name": "USB Flash",
-  "description": "(develop pwa) Nexpaq USB flash tile",
-
-  "version": "1.1.0",
-  "changes": "Optimisation to make adding features faster",
-  "app_version": "1.1.8",
-  "modules": [
-    "nexpaq.module.usbflash"
-  ],
-  
-  "title": "USB",
-  "color": "#4BC3DA",
-  "text_color": "white"
+	"id": "nexpaq.tile.usbflash",
+	"name": "USB Flash",
+	"description": "Nexpaq USB flash tile",
+	"version": "2.0.0",
+	"changes": "Complete rewrite",
+	"app_version": "1.1.8",
+	"modules": [
+		"nexpaq.module.usbflash"
+	],
+	"title": "USB",
+	"color": "#4BC3DA",
+	"text_color": "white"
 }
