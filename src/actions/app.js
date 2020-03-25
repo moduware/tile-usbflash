@@ -30,7 +30,6 @@ export const initializeModuwareApiAsync = () => async dispatch => {
 }
 
 export const moduwareApiReady = () => async dispatch => {
-	console.log('Moduware', Moduware)
 	dispatch({ type: MODUWARE_API_READY });
 	dispatch(loadLanguageTranslation());
 
@@ -40,10 +39,8 @@ export const moduwareApiReady = () => async dispatch => {
 
 	Moduware.v1.Module.addEventListener('MessageReceived', async (data) => {
 		if(data.ModuleUuid !== Moduware.Arguments.uuid) return;
-		console.log('data', data);
 		if (data.Message.dataSource == 'StateChangeResponse' && data.Message.variables.result == 'success') {
 			// requestStatusCheck();
-			console.log('success?????', data);
 		}
 
 		// upon opening tile, update usb flash connect button state based on status check
@@ -76,7 +73,6 @@ export const navigate = (path) => (dispatch) => {
 
 export const loadLanguageTranslation = () => async dispatch => {
 	let language = Moduware.Arguments.language || 'en';
-	console.log(Moduware.Arguments);
 	dispatch({ type: LOAD_LANGUAGE_TRANSLATION, language });
 }
 
@@ -138,7 +134,6 @@ export const getPlatform = () => (dispatch) => {
 };
 
 export const connectUsb = async () => {
-	console.log('connecting...');
 	if(typeof Moduware !== 'undefined') {
 		await Moduware.v1.Module.ExecuteCommand(Moduware.Arguments.uuid, 'Connect', []);
 	}
@@ -146,7 +141,6 @@ export const connectUsb = async () => {
 }
 
 export const disconnectUsb = async () => {
-	console.log('disconnecting...');
 	if (typeof Moduware !== 'undefined') {
 		await Moduware.v1.Module.ExecuteCommand(Moduware.Arguments.uuid, 'Disconnect', []);
 	}
